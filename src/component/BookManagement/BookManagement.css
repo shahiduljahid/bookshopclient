@@ -1,0 +1,70 @@
+.sidebar{
+    
+    background-color: rgb(46, 6, 83);
+
+    color: white !important;
+    font-size: 10px;
+    font-weight: 400;
+    padding-top: 30px;
+}
+.height{
+    height: 700px;
+}
+label{
+    font-weight: 700;
+}
+.sidebar-link{
+   
+    list-style: none;
+    color: white !important;
+    text-decoration: none !important;
+    
+  
+    
+}
+.item:hover{
+    background-color: #6200ff4f;
+    padding: 10px 10px;
+
+}
+.uploadBtn{
+    border: 1px solid rgb(46 6 83);
+    padding: 9px 16px;
+    font-size: 17px;
+    border-radius: 3px;
+    background-color: #4847a430;
+    font-weight: 400;
+
+}
+
+@media (min-width:769px) {
+    .sidebar{
+        font-size: 12px;
+    }
+    
+}
+@media (min-width:992px) {
+    .sidebar{
+        font-size: 15px;
+    }
+    
+}
+.alert{
+    color: red;
+    font-size: 15px;
+    font-weight: 500;
+}
+@media (max-width:575px) {
+     .title,li{
+        text-align: center;
+    }
+ 
+    .height{
+        height: 170px;
+        
+    }
+    .sidebar{
+        font-size: 15px;
+    }
+    
+}

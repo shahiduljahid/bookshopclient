@@ -1,0 +1,38 @@
+button img {
+    width: 20px;
+    margin-bottom: 25px;
+    padding-right: 2px;
+    margin-right: 5px;
+  }
+  .signIn-form {
+    border: 1px solid gray;
+    padding: 20px;
+    border-radius: 10px;
+  }
+  .google{
+    color:greenyellow;
+  }
+  .button {
+    font-size: 18px;
+    font-weight: 600;
+  
+    padding: 0 20px;
+    overflow: hidden;
+  }
+  @media (max-width: 992px) {
+    .button {
+      font-size: 8px;
+    }
+  }
+  @media (max-width: 575px) {
+    .button {
+      font-size: 10px;
+    }
+  }
+  @media (max-width: 250px) {
+    .button {
+      font-size: 8px;
+    }
+  }
+  
+  
