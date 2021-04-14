@@ -31,7 +31,7 @@ button img {
   }
   @media (max-width: 250px) {
     .button {
-      font-size: 8px;
+      font-size: 8 px;
     }
   }
   

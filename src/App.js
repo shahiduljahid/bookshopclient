@@ -1,11 +1,11 @@
 
 import './App.css';
-import { createContext, useEffect, useState } from 'react';
+import { createContext,  useState } from 'react';
 
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
+  Route
   
 } from "react-router-dom";
 import Header from './component/Header/Header';
@@ -23,17 +23,8 @@ import Login from './component/Login/Login';
 
 function App() {
   const [loggedInUser ,setLoggedInUser] =useState([])
-  useEffect(()=>{
-    fetch('https://murmuring-earth-21963.herokuapp.com/product',{
-      method: 'GET'
-    })
-    .then(res=>res.json())
-    .then(data=>{
-     setLoggedInUser(data)
-    }
-    )
-  },[])
-  console.log(loggedInUser)
+ 
+
   return (
     <userContext.Provider value={[loggedInUser ,setLoggedInUser]}>
     <div >

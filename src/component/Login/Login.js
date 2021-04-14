@@ -8,7 +8,7 @@ import "firebase/auth";
 import { userContext } from "../../App";
 import { firebaseConfig } from "./firebaseConfig";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGoogle, faGooglePlusG } from "@fortawesome/free-brands-svg-icons";
+import {faGooglePlusG } from "@fortawesome/free-brands-svg-icons";
 
 
 

@@ -51,6 +51,14 @@ const BookManagement = () => {
     if (book.name && book.price && book.AuthorName && imageUrl) {
       const bookData = { ...book, imageUrl: imageUrl };
 
+      const url=`http://localhost:4050/addBook`
+      fetch(url,{
+        method: 'POST',
+        headers: {  'Content-Type': 'application/json'},
+        body:JSON.stringify(bookData)
+      })
+      .then(res=>{console.log(res)})
+
       setImageUrl(null);
       const updatedBookInfo = {
         ...book,
