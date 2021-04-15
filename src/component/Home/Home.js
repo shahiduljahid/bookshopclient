@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import Book from "../Product/Book";
+import './Home.css'
 
 const Home = () => {
   const [book, setBook] = useState([]);
@@ -9,10 +11,18 @@ const Home = () => {
         setBook(data);
       });
   }, []);
-  console.log(book)
+ 
   return (
-    <div>
-      <h1>Home page</h1>
+    <div className="container">
+        <div className="row justify-content-around mx-1  mt-5">
+        {
+            book.map(bk=>{
+               return <Book book={bk}></Book>
+
+            })
+        }
+        </div>
+      
     </div>
   );
 };

@@ -1,0 +1,12 @@
+@media (max-width:350px) {
+    .price{
+        display: none;
+    }
+    
+}
+@media (max-width:575px) {
+    .authorName{
+        display: none;
+    }
+    
+}

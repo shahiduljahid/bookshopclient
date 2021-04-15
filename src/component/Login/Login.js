@@ -1,14 +1,13 @@
 import React, { useContext, useState } from "react";
 import "./Login.css";
-// import google from "../../urban-riders/images/google.png";
+import logo from '../../pic/Group 573.png'
 import {  useHistory, useLocation } from "react-router-dom";
 import firebase from "firebase/app";
 import "firebase/auth";
 
 import { userContext } from "../../App";
 import { firebaseConfig } from "./firebaseConfig";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faGooglePlusG } from "@fortawesome/free-brands-svg-icons";
+
 
 
 
@@ -244,13 +243,10 @@ const Login = () => {
             {newUser && (
               <button
                 onClick={() => handleGoogleSignIn()}
-                className="btn btn-danger pt-1 pb-1 button form-group form-control"
+                className="btn bg-light py-1  button form-group form-control"
               >
-                
-                <FontAwesomeIcon
-                          className="mr-1 google"
-                          icon={faGooglePlusG}
-                        />create account with Google
+               <img className='text-center' src={logo} alt=""/> 
+               create account with Google
               </button>
             )}
             

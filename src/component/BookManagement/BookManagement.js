@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {  useState } from "react";
 import "./BookManagement.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -9,10 +9,14 @@ import {
 import { Link } from "react-router-dom";
 import { faEdit } from "@fortawesome/free-regular-svg-icons";
 import axios from "axios";
+import ManageBook from "../ManageBook/ManageBook";
+// import { BookContext } from "../../App";
 
 const BookManagement = () => {
   const [sidebarToggle, setSidebarToggle] = useState(true);
   const [imageUrl, setImageUrl] = useState(null);
+  // const[data,setData] = useContext(BookContext)
+ 
   const [book, setBook] = useState({
     name: "",
     price: "",
@@ -51,7 +55,7 @@ const BookManagement = () => {
     if (book.name && book.price && book.AuthorName && imageUrl) {
       const bookData = { ...book, imageUrl: imageUrl };
 
-      const url=`http://localhost:4050/addBook`
+      const url=`https://murmuring-earth-21963.herokuapp.com/addBook`
       fetch(url,{
         method: 'POST',
         headers: {  'Content-Type': 'application/json'},
@@ -89,7 +93,7 @@ const BookManagement = () => {
   return (
     <div className="container">
       <div className="row m-2">
-        <div className="rounded height  sidebar col-xs-12 col-sm-4 col-md-3">
+        <div className="rounded height  sidebar col-xs-12 col-sm-12  col-md-2">
           <ul className="p-0">
             <Link className=" nav-item sidebar-link">
               <li
@@ -111,7 +115,7 @@ const BookManagement = () => {
             </Link>
           </ul>
         </div>
-        <div className="col-xs-12 col-sm-8  bg-light">
+        <div className="col-xs-12 col-sm-12 col-md-9  bg-light">
           <div className="row">
             <div className="col-12 pt-3 mb-3 title  ml-2 h6">ADD BOOK</div>
 
@@ -202,12 +206,11 @@ const BookManagement = () => {
                 </button>
               </div>
             ) : (
-              <div className="col-11 shadow p-4 ml-3 pt-5 mb-5 bg-white rounded">
-                BookManagement
-                <h1>{book.name}</h1>
-                <h1>{book.price}</h1>
-                <h1>{book.AuthorName}</h1>
-                <img src={imageUrl} alt="" />
+              <div className="col-12 col-sm-11 shadow manageBook p-4 ml-3 pt-5 mb-5 bg-white rounded">
+               
+              
+                <ManageBook></ManageBook>
+             
               </div>
             )}
           </div>

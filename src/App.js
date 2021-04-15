@@ -14,18 +14,21 @@ import Nomatch from './component/Nomatch/Nomatch';
 import Order from './component/Order/Order';
 import BookManagement from './component/BookManagement/BookManagement';
 import Login from './component/Login/Login';
-// import Route from './component/PrivateRoute/PrivateRoute';
+import PrivateRoute from './component/PrivateRoute/PrivateRoute';
 
 
 
 
  export const userContext = createContext();
+ export const BookContext = createContext();
 
 function App() {
   const [loggedInUser ,setLoggedInUser] =useState([])
+  const[data ,setData]=useState([])
  
 
   return (
+    <BookContext.Provider value={[data ,setData]}>
     <userContext.Provider value={[loggedInUser ,setLoggedInUser]}>
     <div >
     
@@ -39,15 +42,15 @@ function App() {
             
             <Home></Home>
           </Route>
-          <Route path="/order">
+          <PrivateRoute path="/order">
             <Order></Order>
           
-          </Route>
-          <Route path="/admin">
+          </PrivateRoute>
+          <PrivateRoute path="/admin">
             <BookManagement></BookManagement>
            
 
-          </Route>
+          </PrivateRoute>
           <Route path="/login">
           <Login></Login>
            
@@ -67,6 +70,7 @@ function App() {
      
     </div>
     </userContext.Provider>
+    </BookContext.Provider>
   );
 }
 

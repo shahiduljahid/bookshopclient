@@ -1,6 +1,6 @@
 button img {
     width: 20px;
-    margin-bottom: 25px;
+
     padding-right: 2px;
     margin-right: 5px;
   }
@@ -9,9 +9,7 @@ button img {
     padding: 20px;
     border-radius: 10px;
   }
-  .google{
-    color:greenyellow;
-  }
+  
   .button {
     font-size: 18px;
     font-weight: 600;

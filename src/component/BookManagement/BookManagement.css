@@ -41,6 +41,10 @@ label{
     .sidebar{
         font-size: 12px;
     }
+    .sidebar-link{
+   
+   text-align: center;
+    }
     
 }
 @media (min-width:992px) {
@@ -54,7 +58,7 @@ label{
     font-size: 15px;
     font-weight: 500;
 }
-@media (max-width:575px) {
+@media (max-width:768px) {
      .title,li{
         text-align: center;
     }
@@ -65,6 +69,15 @@ label{
     }
     .sidebar{
         font-size: 15px;
+    }
+    
+}
+@media (max-width:575px) {
+    .manageBook{
+        padding: 0;
+        margin-left: 0!important;
+     
+
     }
     
 }

@@ -56,7 +56,7 @@ const Header = () => {
             <button onClick={()=>hangleSignOut()} className="btn btn-danger">Log out</button>
           </Link>
         ) : (
-          <Link class="nav-link" to={"/login"}>
+          <Link className="nav-link" to={"/login"}>
             <button className="btn btn-success">Log in</button>
           </Link>
         )}
