@@ -8,19 +8,29 @@ const Order = () => {
   const[cart ,setCart] =useContext(BookContext);
   const history = useHistory();
   // console.log(orderData )
-  // console.log(cart)
+  console.log(cart)
+
 
 
   // useEffect(() => {
   //   fetch("http://localhost:4050/order")
   //     .then((res) => res.json())
   //     .then((data) => {
-  //       setOrderData(data);
+        
+
   //     });
   // }, []);
+ 
   const handleCheckOut =()=>{
-    console.log('clicked')
+    
+
+
+    // fetch(`http://localhost:4050/proccedOrder`, {
+    //   method: "DELETE",
+    // }).then((result) => {});
+
     setCart([])
+
     history.push('/shipment')
 
   }

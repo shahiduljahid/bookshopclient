@@ -14,7 +14,8 @@ import Nomatch from './component/Nomatch/Nomatch';
 import Order from './component/Order/Order';
 import BookManagement from './component/BookManagement/BookManagement';
 import Login from './component/Login/Login';
-// import PrivateRoute from './component/PrivateRoute/PrivateRoute';
+import Shipment from './component/Shipment/Shipment';
+import PrivateRoute from './component/PrivateRoute/PrivateRoute';
 
 
 
@@ -45,19 +46,22 @@ function App() {
             
             <Home></Home>
           </Route>
-          <Route path="/order">
+          <PrivateRoute path="/order">
             <Order></Order>
           
-          </Route>
-          <Route path="/admin">
+          </PrivateRoute>
+          <PrivateRoute path="/admin">
             <BookManagement></BookManagement>
            
 
-          </Route>
+          </PrivateRoute>
           <Route path="/login">
           <Login></Login>
            
            </Route>
+           <PrivateRoute path="/shipment">
+             <Shipment></Shipment>
+           </PrivateRoute>
            <Route exact path="/">
           
            <Home></Home>
