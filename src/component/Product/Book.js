@@ -46,14 +46,14 @@ const Book = (props) => {
         
      
         
-      const uniqueUrl=`http://localhost:4050/addUniqueOrder`
-      fetch( uniqueUrl,{
-        method: 'POST',
-        headers: {  'Content-Type': 'application/json'},
-        body: JSON.stringify({...cart})
+    //   const uniqueUrl=`http://localhost:4050/addUniqueOrder`
+    //   fetch( uniqueUrl,{
+    //     method: 'POST',
+    //     headers: {  'Content-Type': 'application/json'},
+    //     body: JSON.stringify({...cart})
         
-      })
-      .then(res=>{console.log(res)})
+    //   })
+    //   .then(res=>{console.log(res)})
           
       // const url=`http://localhost:4050/addOrders`
       // fetch(url,{
