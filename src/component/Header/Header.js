@@ -44,7 +44,7 @@ const Header = () => {
         <li className="nav-item text-center">
           <Link className="nav-link active link" to={'/admin'}>admin</Link>
         </li>
-        <li>
+        <li className="nav-item text-center">
         {loggedInUser.email && (
           <a href  className=" nav-link border border-primary rounded">Hi {loggedInUser.name}</a>
         )}
