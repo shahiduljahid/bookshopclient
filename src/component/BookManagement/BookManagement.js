@@ -1,4 +1,4 @@
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import "./BookManagement.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -10,18 +10,21 @@ import { Link } from "react-router-dom";
 import { faEdit } from "@fortawesome/free-regular-svg-icons";
 import axios from "axios";
 import ManageBook from "../ManageBook/ManageBook";
+import { CircularProgress } from "@material-ui/core";
 // import { BookContext } from "../../App";
 
 const BookManagement = () => {
   const [sidebarToggle, setSidebarToggle] = useState(true);
   const [imageUrl, setImageUrl] = useState(null);
+  const [upload, setUpload] = useState(false);
   // const[data,setData] = useContext(BookContext)
- 
+
   const [book, setBook] = useState({
     name: "",
     price: "",
     AuthorName: "",
     noImage: "",
+    upload: false,
     success: false,
     failed: "",
   });
@@ -31,9 +34,10 @@ const BookManagement = () => {
     setBook(newBookInfo);
   };
   const handleFile = (event) => {
+    setUpload(true);
     const imageData = new FormData();
     imageData.set("key", "f16e0919dbce32c8326397f504a1e7b1");
-    console.log(event.target.files[0])
+    console.log(event.target.files[0]);
     imageData.append("image", event.target.files[0]);
     axios
       .post(
@@ -43,6 +47,7 @@ const BookManagement = () => {
       )
       .then(function (response) {
         setImageUrl(response.data.data.display_url);
+        setUpload(false);
         const newBookInfo = { ...book };
         newBookInfo.noImage = "";
         setBook(newBookInfo);
@@ -55,13 +60,14 @@ const BookManagement = () => {
     if (book.name && book.price && book.AuthorName && imageUrl) {
       const bookData = { ...book, imageUrl: imageUrl };
 
-      const url=`https://murmuring-earth-21963.herokuapp.com/addBook`
-      fetch(url,{
-        method: 'POST',
-        headers: {  'Content-Type': 'application/json'},
-        body:JSON.stringify(bookData)
-      })
-      .then(res=>{console.log(res)})
+      const url = `https://murmuring-earth-21963.herokuapp.com/addBook`;
+      fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(bookData),
+      }).then((res) => {
+        console.log(res);
+      });
 
       setImageUrl(null);
       const updatedBookInfo = {
@@ -73,7 +79,7 @@ const BookManagement = () => {
       };
       setBook(updatedBookInfo);
     } else if (!imageUrl) {
-      const newBookInfo = { ...book ,success: false };
+      const newBookInfo = { ...book, success: false };
       newBookInfo.noImage = "please upload a image";
       setBook(newBookInfo);
     } else {
@@ -82,13 +88,12 @@ const BookManagement = () => {
       setBook(newBookInfo);
     }
   };
-  const handleFocus=(e)=>{
-    e.target.value='';
+  const handleFocus = (e) => {
+    e.target.value = "";
     const newBookInfo = { ...book, success: false };
-    
-    setBook(newBookInfo);
 
-  }
+    setBook(newBookInfo);
+  };
 
   return (
     <div className="container">
@@ -126,7 +131,7 @@ const BookManagement = () => {
                     <form action="" className="">
                       <label>Book name</label>
                       <input
-                      onFocus={handleFocus}
+                        onFocus={handleFocus}
                         onBlur={handleBlur}
                         className="form-control  mb-2 from-group"
                         type="text"
@@ -138,7 +143,7 @@ const BookManagement = () => {
 
                       <label>Add price</label>
                       <input
-                      onFocus={handleFocus}
+                        onFocus={handleFocus}
                         onBlur={handleBlur}
                         className="form-control mb-2  from-group"
                         type="text"
@@ -154,7 +159,7 @@ const BookManagement = () => {
                     <form action="" className="">
                       <label>Author name</label>
                       <input
-                      onFocus={handleFocus}
+                        onFocus={handleFocus}
                         onBlur={handleBlur}
                         className="form-control mb-2  from-group"
                         placeholder="Enter name"
@@ -167,11 +172,14 @@ const BookManagement = () => {
                       <label>Add book cover photo</label>
                       <br />
                       <label htmlFor="fileBtn" className="uploadBtn">
-                        <FontAwesomeIcon
+                       
+                        {imageUrl ? <p> <FontAwesomeIcon
                           className="mr-2"
                           icon={faCloudUploadAlt}
-                        />
-                        Upload Photo
+                        />uploaded</p> : <p> <FontAwesomeIcon
+                        className="mr-2"
+                        icon={faCloudUploadAlt}
+                      />Upload Photo</p>}
                       </label>
                       <input
                         onChange={handleFile}
@@ -182,6 +190,13 @@ const BookManagement = () => {
                         required
                         hidden
                       />
+                      {upload &&
+                        <p className="h4">
+                          <CircularProgress />
+                          <CircularProgress color="secondary" />
+                          <span > uploading... </span>  
+                        </p>
+                      }
                       <p style={{ color: "red", fontWeight: 500 }}>
                         {book.noImage}
                       </p>
@@ -207,10 +222,7 @@ const BookManagement = () => {
               </div>
             ) : (
               <div className="col-12 col-sm-11 shadow manageBook p-4 ml-3 pt-5 mb-5 bg-white rounded">
-               
-              
                 <ManageBook></ManageBook>
-             
               </div>
             )}
           </div>
