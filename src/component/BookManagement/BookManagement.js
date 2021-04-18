@@ -173,7 +173,7 @@ const BookManagement = () => {
                       <br />
                       <label htmlFor="fileBtn" className="uploadBtn">
                        
-                        {imageUrl ? <p> <FontAwesomeIcon
+                        {imageUrl ? <p className="text-success"> <FontAwesomeIcon
                           className="mr-2"
                           icon={faCloudUploadAlt}
                         />uploaded</p> : <p> <FontAwesomeIcon
@@ -194,7 +194,7 @@ const BookManagement = () => {
                         <p className="h4">
                           <CircularProgress />
                           <CircularProgress color="secondary" />
-                          <span > uploading... </span>  
+                          <span className="text-danger" > uploading... </span>  
                         </p>
                       }
                       <p style={{ color: "red", fontWeight: 500 }}>
