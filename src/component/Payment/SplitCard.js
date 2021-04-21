@@ -132,14 +132,14 @@ const SplitCard = ({handlePayment}) => {
           }}
         />
       </label> <br/>
-      <button  className="btn btn-primary" type="submit" disabled={!stripe}>
+      <button  className=" mt-3 btn btn-primary" type="submit" disabled={!stripe}>
         Pay
       </button>
       {
-          paymentError && <p  className="text-danger text-center" >{paymentError}</p>
+          paymentError && <p  className=" mt-2 text-danger text-center" >{paymentError}</p>
       }
          {
-          paymentSuccess && <p  className="text-success text-center">Your payment was successfully</p>
+          paymentSuccess && <p  className=" mt-2 text-success text-center">Your payment was successfully</p>
       }
 
     </form>
