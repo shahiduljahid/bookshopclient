@@ -57,7 +57,7 @@ const Shipment = () => {
 
   return (
     <div className="container">
-      <div className="row">
+      <div className="row justify-content-around">
         {
           !orderSubmitted && <div className="col-xl-5 shadow m-5 p-3 rounded">
           <form onSubmit={handleSubmit(onSubmit)}>
@@ -87,7 +87,7 @@ const Shipment = () => {
         </div>
         }
     {
-      orderSubmitted && <div className="col-xl-5 shadow m-5 p-3 rounded">
+      orderSubmitted && <div className="col-xs-10 p-2 col-sm-8 shadow m-1 mt-5 rounded">
 
     <Payment handlePayment={handlePayment}></Payment>
 
