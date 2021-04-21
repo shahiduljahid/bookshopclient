@@ -15,7 +15,7 @@ const Login = () => {
   const [loggedInUser, setLoggedInUser] = useContext(userContext
     
   );
-  console.log(loggedInUser)
+
   const [user, setUser] = useState({
     isUser: false,
     name: "",
@@ -55,6 +55,7 @@ const Login = () => {
         };
         setUser(SignInUser);
         setLoggedInUser(SignInUser);
+        sessionStorage.setItem('token',SignInUser.email)
         history.replace(from.pathname);
       })
       .catch((error) => {
@@ -95,6 +96,7 @@ const Login = () => {
             success: true,
           };
           setLoggedInUser(SignInUser);
+          sessionStorage.setItem('token',SignInUser)
           history.replace(from);
         })
         .catch((error) => {

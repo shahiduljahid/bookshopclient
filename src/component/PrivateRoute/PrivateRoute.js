@@ -1,28 +1,29 @@
-import React, { useContext } from 'react';
-import { Redirect, Route } from 'react-router';
-import {  userContext } from '../../App';
-
+import React, { useContext } from "react";
+import { Redirect, Route } from "react-router";
+import { userContext } from "../../App";
 
 const PrivateRoute = ({ children, ...rest }) => {
-    const[loggedInUser, setLoggedInUser] = useContext(userContext);
-    console.log(setLoggedInUser)
-    return (
-        <Route
+  const [loggedInUser, setLoggedInUser] = useContext(userContext);
+
+  const user =  sessionStorage.getItem("token");
+  console.log(user);
+  return (
+    <Route
       {...rest}
       render={({ location }) =>
-    loggedInUser.email? (
+        loggedInUser.email || user ? (
           children
         ) : (
           <Redirect
             to={{
               pathname: "/login",
-              state: { from: location }
+              state: { from: location },
             }}
           />
         )
       }
     />
-    );
+  );
 };
 
 export default PrivateRoute;

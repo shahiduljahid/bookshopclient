@@ -1,18 +1,100 @@
-import React from "react";
+import React, { useContext, useState } from "react";
+import { set, useForm } from "react-hook-form";
+import { BookContext, userContext } from "../../App";
+import Payment from "../Payment/Payment";
 
 const Shipment = () => {
-  return (
-    <div >
-      <div className="mt-5 text-center container d-flex justify-content-around col-xl-6"><h1>Thanks For Shopping</h1></div>
-        <div className="container col-xl-6 d-flex justify-content-around">
-        
-        <img className="img-fluid" src="https://media.giphy.com/media/6A5aeKoUiIH7DwbR3R/giphy.gif" alt=""/>
+  const[cart ,setCart] =useContext(BookContext);
+  const [loggedInUser, setLoggedInUser] = useContext(userContext
+    
+    );
+    const[shipment, setShipment] = useState();
+  const [orderSubmitted , setOrderSubmitted] = useState(false);
+  const [err ,setErr] =useState(false);
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
+ 
+  const onSubmit = (data) => {
+    console.log(data)
+    setShipment(data)
+   
   
+    if(data.address && data.phoneNumber){
+    
+      setOrderSubmitted(true)
+
+    }
+    else{
+   
+     setErr(true)
+
+    }
+  };
+
+  const handlePayment =(paymentId)=>{
+
+    const data = { 'user':sessionStorage.getItem("token") ||loggedInUser  ,'cart':cart , 'shipment':shipment ,paymentId}
+    console.log(data)
      
-    </div>
-      
-    </div>
+      const url=`http://localhost:4050/addOrder`
+      fetch(url,{
+        method: 'POST',
+        headers: {  'Content-Type': 'application/json'},
+        body: JSON.stringify(data)
+        
+      })
+      .then(res=>{console.log(res)})
+      setCart([])
+
+  }
+ 
+
   
+
+  return (
+    <div className="container">
+      <div className="row">
+        {
+          !orderSubmitted && <div className="col-xl-5 shadow m-5 p-3 rounded">
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <label htmlFor="">Address:</label>
+            {/* register your input into the hook by invoking the "register" function */}
+            <input
+              className="form-control form-group"
+              placeholder="Your address"
+             
+              {...register("address",{ required: true })}
+            />
+            <label htmlFor="">Phone Number:</label>
+            {/* include validation with required or other standard HTML validation rules */}
+            <input
+              className="form-control form-group"
+              placeholder="your phone Number"
+              {...register("phoneNumber", { required: true })}
+            />
+            {/* errors will return when field validation fails  */}
+            {errors.exampleRequired && <span>This field is required</span>}
+
+            <input className="btn btn-primary" type="submit" />
+          </form>
+        {
+          err && <p className="text-center text-danger">please give all information</p>
+        }
+        </div>
+        }
+    {
+      orderSubmitted && <div className="col-xl-5 shadow m-5 p-3 rounded">
+
+    <Payment handlePayment={handlePayment}></Payment>
+
+      </div>
+    }
+      </div>
+    </div>
   );
 };
 

@@ -29,7 +29,7 @@ const Order = () => {
     //   method: "DELETE",
     // }).then((result) => {});
 
-    setCart([])
+    
 
     history.push('/shipment')
 

@@ -4,11 +4,16 @@ import { userContext } from '../../App';
 import './Header.css'
 import firebase from "firebase/app";
 import "firebase/auth";
+import { firebaseConfig } from "../Login/firebaseConfig";
 
 const Header = () => {
   const [loggedInUser, setLoggedInUser] = useContext(userContext
    
   );
+  if (firebase.apps.length === 0) {
+    firebase.initializeApp(firebaseConfig);
+  }
+
   const hangleSignOut =()=>{
     firebase.auth().signOut().then((res) => {
         const userSignOut = {
@@ -18,10 +23,12 @@ const Header = () => {
 
         }
         setLoggedInUser(userSignOut)
+        
        
       }).catch((error) => {
         // An error happened.
       });
+      sessionStorage.removeItem('token')
   }
 
     return (
@@ -42,16 +49,19 @@ const Header = () => {
           <Link className="nav-link active link" to={'/order'}>order</Link>
         </li>
         <li className="nav-item text-center">
+          <Link className="nav-link active link" to={'/Shipment'}>CheackOut</Link>
+        </li>
+        <li className="nav-item text-center">
           <Link className="nav-link active link" to={'/admin'}>admin</Link>
         </li>
         <li className="nav-item text-center">
-        {loggedInUser.email && (
-          <a href  className=" nav-link border border-primary rounded">Hi {loggedInUser.name}</a>
+        {(loggedInUser.email  || sessionStorage.getItem('token')) && (
+          <a href  className=" nav-link border border-primary rounded">Hi {loggedInUser.name  || 'user' }</a>
         )}
         </li>
     
         <li className="nav-item text-center">
-        {loggedInUser.email ? (
+        {loggedInUser.email || sessionStorage.getItem('token') ? (
           <Link class="nav-link" to={"/login"}>
             <button onClick={()=>hangleSignOut()} className="btn btn-danger">Log out</button>
           </Link>
