@@ -75,10 +75,11 @@ const SplitCard = ({handlePayment}) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
+    <form   className="ml-5" onSubmit={handleSubmit}>
+      <label >
         Card number
         <CardNumberElement
+      
           options={options}
           onReady={() => {
             console.log("CardNumberElement [ready]");
