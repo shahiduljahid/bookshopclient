@@ -40,7 +40,7 @@ const Shipment = () => {
     const data = { 'user':sessionStorage.getItem("token") ||loggedInUser  ,'cart':cart , 'shipment':shipment ,paymentId}
     console.log(data)
      
-      const url=`http://localhost:4050/addOrder`
+      const url=`https://murmuring-earth-21963.herokuapp.com/addOrder`
       fetch(url,{
         method: 'POST',
         headers: {  'Content-Type': 'application/json'},
