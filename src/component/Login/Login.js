@@ -96,7 +96,7 @@ const Login = () => {
             success: true,
           };
           setLoggedInUser(SignInUser);
-          sessionStorage.setItem('token',SignInUser)
+          sessionStorage.setItem('token',SignInUser.email)
           history.replace(from);
         })
         .catch((error) => {
@@ -122,6 +122,7 @@ const Login = () => {
             success: true,
           };
           setLoggedInUser(SignInUser);
+          sessionStorage.setItem('token',SignInUser.email)
           history.replace(from);
         })
         .catch((error) => {
