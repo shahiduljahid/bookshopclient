@@ -9,7 +9,7 @@ const ManageBook = () => {
   //   const[deletedata ,setDeleteData]= useState(false)
 
   useEffect(() => {
-    fetch("https://murmuring-earth-21963.herokuapp.com/Book")
+    fetch("https://bookshopserver.vercel.app/Book")
       .then((res) => res.json())
       .then((data) => {
         setBook(data);
@@ -24,7 +24,7 @@ const ManageBook = () => {
     const deleted = book.filter((bk) => bk._id !== id);
     setBook(deleted)
 
-    fetch(`https://murmuring-earth-21963.herokuapp.com/deleteBook/${id}`, {
+    fetch(`https://bookshopserver.vercel.app/deleteBook/${id}`, {
       method: "DELETE",
     }).then((result) => {});
   };
@@ -58,12 +58,12 @@ const ManageBook = () => {
                   ${bk.price}
                 </td>
                 <td style={{ fontWeight: "500" }}>
-                  <span className="actionBtn">
+                  {/* <span className="actionBtn">
                     <FontAwesomeIcon
                       className="mr-2  text-success"
                       icon={faPencilAlt}
                     />
-                  </span>
+                  </span> */}
                   <span
                     onClick={() => handleDelete(bk._id)}
                     className="actionBtn"

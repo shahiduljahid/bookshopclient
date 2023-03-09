@@ -6,7 +6,7 @@ import "./Home.css";
 const Home = () => {
   const [book, setBook] = useState([]);
   useEffect(() => {
-    fetch("https://murmuring-earth-21963.herokuapp.com/Book")
+    fetch("https://bookshopserver.vercel.app/Book")
       .then((res) => res.json())
       .then((data) => {
         setBook(data);
@@ -14,7 +14,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="container">
+    <div  style={{margin:'10px 20px'}}>
       <div className="row justify-content-around mx-1  mt-5">
         {book.length === 0 && (
           <div className="d-flex mt-2 pt-2 justify-content-center">

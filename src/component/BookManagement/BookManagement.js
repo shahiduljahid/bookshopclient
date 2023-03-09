@@ -60,7 +60,7 @@ const BookManagement = () => {
     if (book.name && book.price && book.AuthorName && imageUrl) {
       const bookData = { ...book, imageUrl: imageUrl };
 
-      const url = `https://murmuring-earth-21963.herokuapp.com/addBook`;
+      const url = `https://bookshopserver.vercel.app/addBook`;
       fetch(url, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -111,11 +111,6 @@ const BookManagement = () => {
             <Link className="nav-item sidebar-link">
               <li onClick={() => setSidebarToggle(true)} className="item pb-3 ">
                 <FontAwesomeIcon icon={faPlusSquare} /> Add book
-              </li>
-            </Link>
-            <Link className="nav-item sidebar-link">
-              <li onClick={() => setSidebarToggle(true)} className="item pb-3 ">
-                <FontAwesomeIcon icon={faEdit} /> Edit book
               </li>
             </Link>
           </ul>

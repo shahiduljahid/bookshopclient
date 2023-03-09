@@ -77,7 +77,7 @@ const SplitCard = ({handlePayment}) => {
   return (
     <form   className="ml-5" onSubmit={handleSubmit}>
       <label >
-        Card number
+      {`Card number(4242 4242 4242 4242)`}
         <CardNumberElement
       
           options={options}
