@@ -2,6 +2,8 @@
 
 <a href="https://bookshop-9dab3.web.app/">Live Preview</a>
 <br>
+<br>
+<br>
 <img src="https://shahidul-portfolio.web.app/_next/static/media/bookShop.7c3c7435.png" height="400"/>
 <br>
 This is a Book shop web application created using React.js. It allows users to place orders and view their order history, while administrators can add and delete products, and manage the application through a dashboard. The application has a responsive design that supports both desktop and mobile devices.
