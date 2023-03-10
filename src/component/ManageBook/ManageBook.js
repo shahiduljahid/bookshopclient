@@ -9,7 +9,7 @@ const ManageBook = () => {
   //   const[deletedata ,setDeleteData]= useState(false)
 
   useEffect(() => {
-    fetch("https://bookshopserver.vercel.app/Book")
+    fetch(`${process.env.REACT_APP_API_BASE_URL}/Book`)
       .then((res) => res.json())
       .then((data) => {
         setBook(data);
@@ -24,7 +24,7 @@ const ManageBook = () => {
     const deleted = book.filter((bk) => bk._id !== id);
     setBook(deleted)
 
-    fetch(`https://bookshopserver.vercel.app/deleteBook/${id}`, {
+    fetch(`${process.env.REACT_APP_API_BASE_URL}/deleteBook/${id}`, {
       method: "DELETE",
     }).then((result) => {});
   };

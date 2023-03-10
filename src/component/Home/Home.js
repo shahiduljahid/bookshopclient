@@ -6,7 +6,7 @@ import "./Home.css";
 const Home = () => {
   const [book, setBook] = useState([]);
   useEffect(() => {
-    fetch("https://bookshopserver.vercel.app/Book")
+    fetch(`${process.env.REACT_APP_API_BASE_URL}/Book`)
       .then((res) => res.json())
       .then((data) => {
         setBook(data);

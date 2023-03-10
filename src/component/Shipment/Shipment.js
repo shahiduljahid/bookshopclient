@@ -40,7 +40,7 @@ const Shipment = () => {
     const data = { 'user':sessionStorage.getItem("token") ||loggedInUser  ,'cart':cart , 'shipment':shipment ,paymentId}
     console.log(data)
      
-      const url=`https://bookshopserver.vercel.app/addOrder`
+      const url=`${process.env.REACT_APP_API_BASE_URL}/addOrder`
       fetch(url,{
         method: 'POST',
         headers: {  'Content-Type': 'application/json'},
